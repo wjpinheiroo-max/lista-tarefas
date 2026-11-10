@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --ink: #252522;
+  --muted: #85857e;
+  --line: #ecece5;
+  --green: #617b5a;
+  --green-dark: #496343;
+  --cream: #f7f7f2;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #f0f1eb;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.page-shell {
+  min-height: 100vh;
+  padding: 54px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(194, 207, 181, .28), transparent 28%),
+    radial-gradient(circle at 90% 86%, rgba(221, 211, 185, .3), transparent 25%),
+    #f4f5ef;
+}
+.app-card {
+  width: min(100%, 720px);
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 26px;
+  padding: 36px 42px 24px;
+  box-shadow: 0 24px 70px rgba(47, 57, 39, .09);
+}
+.topline { display: flex; align-items: center; gap: 11px; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 11px;
+  display: grid; place-items: center; color: white;
+  background: var(--green); font-weight: 700; font-size: 19px;
+}
+.eyebrow, .date-label, .page-note {
+  font-size: 10px; letter-spacing: 1.7px; font-weight: 700; color: var(--muted);
+}
+.intro { margin: 35px 0 26px; }
+.date-label { color: var(--green); margin: 0 0 9px; }
+h1 {
+  font: 800 clamp(35px, 7vw, 48px)/1.1 'Manrope', sans-serif;
+  letter-spacing: -2px; margin: 0;
+}
+h1 span { color: var(--green); }
+.subtitle { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
+.stat { background: #f7f8f4; border: 1px solid #eff0e9; border-radius: 15px; padding: 15px 17px; display: flex; flex-direction: column; gap: 4px; }
+.stat-total { background: #edf2e9; border-color: #e6ecdf; }
+.stat-number { font: 800 25px 'Manrope', sans-serif; color: var(--ink); }
+.stat-label { color: var(--muted); font-size: 11px; }
+.task-form { display: flex; gap: 10px; margin-bottom: 34px; }
+.task-form input {
+  flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; outline: none; color: var(--ink); background: #fff; font-size: 13px;
+  transition: border .2s, box-shadow .2s;
+}
+.task-form input:focus { border-color: #9caf91; box-shadow: 0 0 0 3px rgba(97,123,90,.1); }
+.task-form input::placeholder { color: #aaa99f; }
+.task-form button {
+  border: 0; border-radius: 12px; padding: 0 18px; background: var(--green);
+  color: white; font-size: 12px; font-weight: 700; transition: background .2s, transform .2s;
+}
+.task-form button:hover:not(:disabled) { background: var(--green-dark); transform: translateY(-1px); }
+.task-form button:disabled { opacity: .5; cursor: not-allowed; }
+.task-form button span { font-size: 17px; margin-left: 5px; vertical-align: -1px; }
+.list-heading { display: flex; align-items: center; justify-content: space-between; }
+.list-heading h2 { margin: 0; font: 700 19px 'Manrope', sans-serif; letter-spacing: -.5px; }
+.list-heading p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+.task-count { color: var(--green); background: #edf2e9; border-radius: 8px; padding: 6px 9px; font-size: 11px; font-weight: 700; }
+.filters { display: flex; gap: 7px; margin: 20px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.filter { border: 0; background: transparent; color: var(--muted); padding: 8px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+.filter:hover { background: #f6f7f3; }
+.filter.active { background: #edf2e9; color: var(--green-dark); }
+.task-list { min-height: 155px; }
+.task-item {
+  display: flex; align-items: center; gap: 12px; padding: 14px 5px;
+  border-bottom: 1px solid #f0f0eb; animation: appear .2s ease-out;
+}
+@keyframes appear { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.check-button {
+  flex: 0 0 20px; width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid #c9cec2; background: white; color: white; font-size: 12px;
+  display: grid; place-items: center; padding: 0;
+}
+.completed .check-button { background: var(--green); border-color: var(--green); }
+.task-title { flex: 1; font-size: 13px; line-height: 1.4; overflow-wrap: anywhere; }
+.completed .task-title { color: #a3a49d; text-decoration: line-through; }
+.status-label { color: #9b9c93; font-size: 10px; }
+.completed .status-label { color: var(--green); }
+.delete-button {
+  border: 0; background: transparent; color: #b0b0a8; font-size: 23px;
+  line-height: 1; padding: 2px 5px; border-radius: 6px;
+}
+.delete-button:hover { background: #fff0ed; color: #bd6554; }
+.empty-state {
+  min-height: 150px; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 7px; text-align: center; color: var(--muted); font-size: 12px;
+}
+.empty-state strong { color: #55574f; font-size: 13px; }
+.empty-icon { color: #91a487; font-size: 24px; margin-bottom: 2px; }
+.footer {
+  border-top: 1px solid var(--line); margin-top: 12px; padding-top: 17px;
+  display: flex; justify-content: space-between; gap: 10px; color: #a0a096; font-size: 10px;
+}
+.page-note { margin: 22px 0 0; font-size: 9px; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 600px) {
+  .page-shell { padding: 20px 12px; justify-content: flex-start; }
+  .app-card { padding: 25px 19px 20px; border-radius: 20px; }
+  .intro { margin-top: 29px; }
+  .stats { gap: 7px; }
+  .stat { padding: 12px 10px; }
+  .stat-number { font-size: 22px; }
+  .task-form { flex-direction: column; }
+  .task-form input { min-height: 47px; }
+  .task-form button { min-height: 45px; }
+  .status-label { display: none; }
+  .footer { font-size: 9px; }
+}
